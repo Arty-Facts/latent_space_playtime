@@ -11,3 +11,4 @@ ipykernel
 ipywidgets==7.7.1
 torchsummary
 opencv-python
+RISE
