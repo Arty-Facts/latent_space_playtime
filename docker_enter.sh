@@ -1,10 +1,12 @@
 #! /bin/bash
 docker build -t party_image --build-arg WORK_DIR=$PWD --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) environment || exit
 
+# find nvidia gpu
 gpu=$(lspci | grep -i '.* vga .* nvidia .*')
 
 printf '==============\n'
 
+# if gpu available add --gpus all
 if [[ $gpu == *' nvidia '* ]]; then
     printf 'Nvidia GPU is present:  %s\n' "$gpu"
     docker run -ti \
