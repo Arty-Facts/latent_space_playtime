@@ -9,7 +9,7 @@ printf '==============\n'
 # if gpu available add --gpus all
 if [[ $gpu == *' nvidia '* ]]; then
     printf 'Nvidia GPU is present:  %s\n' "$gpu"
-    docker run -ti \
+    docker run -ti --rm \
         -v ~:/home/$USER \
         --gpus all \
         -v /mnt:/mnt \
@@ -19,7 +19,7 @@ if [[ $gpu == *' nvidia '* ]]; then
         party_image bash 
 else
     printf 'Nvidia GPU is not present cpu only!\n'
-    docker run -ti \
+    docker run -ti --rm \
         -v ~:/home/$USER \
         -v /mnt:/mnt \
         -v /etc/localtime:/etc/localtime:ro \
